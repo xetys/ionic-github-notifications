@@ -17,8 +17,6 @@
 
 
 <ion-content padding>
-  <button ion-button (click)="wipeStorage()">wipe</button>
-  <button ion-button (click)="resync()" color="dark">resync</button>
   <ion-list>
     <ion-item *ngFor="let notification of notifications">
       <ion-icon item-left [name]="iconName(notification.subject?.type)" [color]="iconColor(notification)"></ion-icon>

@@ -31,7 +31,10 @@ export class Notifications {
 
     //this.gitHubNotifications.load()
     //  .subscribe(notifications => this.notifications = this.sortNotificationsByDate(notifications));
-    this.gitHubNotifications.replaySubject.subscribe(notification => this.notifications.push(notification));
+    this.gitHubNotifications.replaySubject.subscribe(notification => { 
+      this.notifications.push(notification);
+      this.notifications = this.sortNotificationsByDate(this.notifications);
+    });
   }
 
   sortNotificationsByDate(notifications: Notification[]): Notification[] {

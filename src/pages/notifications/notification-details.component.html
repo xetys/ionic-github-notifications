@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons >
+
+      <button ion-button (click)="back()" large>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>#{{thread.number}} - {{thread.title}}</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+       <ion-item>
+         <ion-avatar item-left>
+           <img [src]="thread.user.avatar_url">
+         </ion-avatar>
+         <h2>{{ thread.user.login }}</h2>
+       </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <div padding>
+      <ion-segment [(ngModel)]="openTab">
+        <ion-segment-button value="thread">Thread</ion-segment-button>
+        <ion-segment-button value="comments">Comments</ion-segment-button>
+      </ion-segment>
+    </div>
+    <ion-card-content>
+    <div [ngSwitch]="openTab">
+      <div *ngSwitchCase="'thread'" [innerHTML]="marked(thread.body)"></div>
+      <div *ngSwitchCase="'comments'">comments should come here</div>
+    </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

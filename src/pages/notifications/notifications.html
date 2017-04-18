@@ -1,0 +1,35 @@
+<!--
+  Generated template for the Notifications page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>notifications</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button (click)="wipeStorage()">wipe</button>
+  <button ion-button (click)="resync()" color="dark">resync</button>
+  <ion-list>
+    <ion-item *ngFor="let notification of notifications">
+      <ion-icon item-left [name]="iconName(notification.subject?.type)" [color]="iconColor(notification)"></ion-icon>
+      <h2>{{notification.subject?.title}}</h2>
+      <p>
+        {{notification.repository?.name}}
+        {{notification.updated_at | date: 'dd.MM.yyyy HH:mm:ss'}}
+      </p>
+      <button ion-button (click)="openThread(notification)"><ion-icon name="open" item-right></ion-icon>read</button>
+      <button ion-button color="dark"><ion-icon name="checkmark" item-right></ion-icon>mark as read</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
